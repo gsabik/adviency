@@ -21,7 +21,7 @@ const AdviencyLayout = () => {
 				w="25rem"
 			>
 				<Heading>Regalos</Heading>
-            	<GiftInputs/>
+            			<GiftInputs/>
 				<GiftList/>
 			</VStack>
         </Box>
