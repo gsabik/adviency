@@ -28,4 +28,4 @@ const AdviencyLayout = () => {
     );
 }
 
-export default AdviencyLayout;
+export default AdviencyLayout
