@@ -17,7 +17,7 @@ const GiftInputs = () => {
 		id: ""
 	});
 
-	const { addGift } = useContext(GiftsContext);
+	const { addGift, deleteAllGifts } = useContext(GiftsContext);
 
 	const handleInputChange = (e) => {
 		setGift({
@@ -42,8 +42,6 @@ const GiftInputs = () => {
 		})
 	}
 
-	console.log(gift)
-	
 	return (
 		<Stack as="form" onSubmit={handleSubmit}>
 			<FormControl>
@@ -74,6 +72,7 @@ const GiftInputs = () => {
 				/>
 			</FormControl>
 			<Button type="submit">Agregar</Button>
+			<Button onClick={()=>deleteAllGifts()}>Delete all</Button>
 		</Stack>
 	);	
 }

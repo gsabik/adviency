@@ -13,11 +13,16 @@ export const GiftsProvider = ({ children }) => {
 		return setGifts(gifts.filter(gift => gift.id !== id));
 	}
 
+	const deleteAllGifts = () => {
+		return setGifts([]);
+	}
+
 	return (
 		<GiftsContext.Provider value={{
 			gifts,
 			addGift, 
-			deleteGift
+			deleteGift,
+			deleteAllGifts
 		}}
 		>{children}
 		</GiftsContext.Provider>
