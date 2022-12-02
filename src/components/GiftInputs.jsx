@@ -39,7 +39,7 @@ const GiftInputs = () => {
 			imageUrl: "",
 			quantity: 1,
 			id: ""
-		})
+		});
 	}
 
 	return (
@@ -72,7 +72,7 @@ const GiftInputs = () => {
 				/>
 			</FormControl>
 			<Button type="submit">Agregar</Button>
-			<Button onClick={()=>deleteAllGifts()}>Delete all</Button>
+			<Button onClick={()=>deleteAllGifts()}>Borrar todos</Button>
 		</Stack>
 	);	
 }
