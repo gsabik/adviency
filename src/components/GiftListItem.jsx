@@ -1,16 +1,22 @@
-import { Button, HStack, Text } from "@chakra-ui/react"
 import { useContext } from "react"
 import { GiftsContext } from "../context/GiftContext"
+import { Button, HStack, IconButton, Text } from "@chakra-ui/react"
+import { DeleteIcon } from "@chakra-ui/icons";
 
-const GiftItem = ({ description, imageUrl, quantity, id }) => {
+const GiftItem = ({ description, id }) => {
 	const { deleteGift } = useContext(GiftsContext);
 
 	return (
-		<HStack spacing={4}>
+		<HStack
+			justifyContent="space-between" 
+			spacing={4}
+			w="full"
+		>
 			<Text>{description}</Text>
-			<Text>{imageUrl}</Text>
-			<Text>{quantity}</Text>
-			<Button size="md" onClick={() => deleteGift(id)}>Delete</Button>
+			<IconButton
+				icon={<DeleteIcon/>}
+				onClick={() => deleteGift(id)}
+			/>
 		</HStack>
 	);
 }

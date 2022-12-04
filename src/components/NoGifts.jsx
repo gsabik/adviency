@@ -1,9 +1,9 @@
-import { Heading, Stack } from "@chakra-ui/react";
+import { Text, Stack } from "@chakra-ui/react";
 
 const NoGifts = () => {
 	return (
-		<Stack>
-			<Heading>Sin regalos :(</Heading>
+		<Stack py={2}>
+			<Text fontWeight="semibold">Sin regalos :(</Text>
 		</Stack>
 	);
 }

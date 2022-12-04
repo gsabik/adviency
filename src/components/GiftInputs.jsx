@@ -3,7 +3,12 @@ import { GiftsContext } from "../context/GiftContext";
 import { 
 	Button,
 	FormControl, 
-	Input, 
+	Input,
+	NumberDecrementStepper,
+	NumberIncrementStepper,
+	NumberInput,
+	NumberInputField,
+	NumberInputStepper,
 	Stack 
 } from "@chakra-ui/react";
 import { v4 as uuid } from "uuid";
@@ -24,6 +29,8 @@ const GiftInputs = () => {
 			...gift, 
 			[e.target.name]: e.target.value
 		});
+
+		console.log(e.target.value)
 	}
 	
 	const handleSubmit = (e) => {
@@ -43,8 +50,12 @@ const GiftInputs = () => {
 	}
 
 	return (
-		<Stack as="form" onSubmit={handleSubmit}>
-			<FormControl>
+		<Stack 
+			as="form" 
+			onSubmit={handleSubmit}
+			w="full"
+		>
+			<FormControl isRequired>
 				<Input
 					name="description"
 					type="text"
@@ -71,8 +82,15 @@ const GiftInputs = () => {
 					value={gift.quantity}
 				/>
 			</FormControl>
-			<Button type="submit">Agregar</Button>
-			<Button onClick={()=>deleteAllGifts()}>Borrar todos</Button>
+			<Button
+				// disabled={gift.description === ""} 
+				colorScheme="green"
+				type="submit"
+			>Agregar regalo</Button>
+			<Button 
+				colorScheme="red"
+				onClick={()=>deleteAllGifts()}
+			>Borrar todos</Button>
 		</Stack>
 	);	
 }
