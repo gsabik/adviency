@@ -60,6 +60,7 @@ const GiftInputs = () => {
 					name="description"
 					type="text"
 					onChange={handleInputChange}
+					placeholder="Descripción"
 					variant="filled"
 					value={gift.description}
 				/>
@@ -69,6 +70,7 @@ const GiftInputs = () => {
 					name="imageUrl"
 					type="text"
 					onChange={handleInputChange}
+					placeholder="https://image.com"
 					variant="filled"
 					value={gift.imageUrl}
 				/>

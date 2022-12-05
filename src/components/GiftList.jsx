@@ -14,7 +14,7 @@ const GiftList = () => {
 			w="full"
 		>
 			{
-				gifts?.map(gift => (
+				gifts.map(gift => (
 					<GiftItem
 						key={gift.id}
 						{...gift}
