@@ -1,9 +1,9 @@
 import { useContext } from "react"
 import { GiftsContext } from "../context/GiftContext"
-import { Avatar, HStack, IconButton, Text } from "@chakra-ui/react"
+import { Avatar, HStack, IconButton, Text, VStack } from "@chakra-ui/react"
 import { DeleteIcon } from "@chakra-ui/icons";
 
-const GiftItem = ({ description, imageUrl, id }) => {
+const GiftItem = ({ description, addressee, imageUrl, id }) => {
 	const { deleteGift } = useContext(GiftsContext);
 
 	return (
@@ -12,10 +12,18 @@ const GiftItem = ({ description, imageUrl, id }) => {
 			spacing={4}
 			w="full"
 		>
-			<Avatar
-				src={imageUrl}
-			/>
-			<Text>{description}</Text>
+			<HStack>
+				<Avatar
+					src={imageUrl}
+				/>
+				<VStack 
+					alignItems="flex-start"
+					spacing={0}
+				>
+					<Text fontWeight="semibold" fontSize="lg">{description}</Text>
+					<Text>{addressee}</Text>
+				</VStack>
+			</HStack>
 			<IconButton
 				icon={<DeleteIcon/>}
 				onClick={() => deleteGift(id)}

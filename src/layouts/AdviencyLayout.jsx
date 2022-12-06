@@ -2,16 +2,19 @@ import { useContext } from "react";
 import { GiftsContext } from "../context/GiftContext";
 import { 
     Box, 
+    Button, 
+    Divider, 
     Heading, 
+	Text, 
     VStack 
 } from "@chakra-ui/react";
-import GiftInputs from "../components/GiftInputs";
 import GiftList from "../components/GiftList";
 import NoGifts from "../components/NoGifts";
 import giftWallpaper from "../assets/giftWallpaper.jpg";
+import ModalFormn from "../components/ModalForm";
 
 const AdviencyLayout = () => {
-	const { gifts } = useContext(GiftsContext);
+	const { gifts, deleteAllGifts } = useContext(GiftsContext);
 
     return (
         <Box
@@ -25,15 +28,32 @@ const AdviencyLayout = () => {
 				bgColor="white"
 				borderRadius="md"
 				p={4}
+				spacing={4}
 				w="25rem"
 			>
 				<Heading>Regalos</Heading>
-            	<GiftInputs/>
+				<ModalFormn/>
 				{
 					gifts.length === 0
 					? <NoGifts/>
 					: <GiftList/>
 				}
+				<Divider/>
+				<Text fontWeight="semibold">Total: ${}</Text>
+				<VStack w="full">
+					{
+						gifts.length > 0 
+						&& 
+						<Button 
+							colorScheme="red"
+							onClick={() => deleteAllGifts()}
+							w="full"
+						>Borrar todos</Button>
+					}
+					<Button 
+						w="full"
+					>Previsualizar</Button>
+				</VStack>
 			</VStack>
         </Box>
     );

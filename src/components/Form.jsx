@@ -4,33 +4,26 @@ import {
 	Button,
 	FormControl, 
 	Input,
-	NumberDecrementStepper,
-	NumberIncrementStepper,
-	NumberInput,
-	NumberInputField,
-	NumberInputStepper,
-	Stack 
+	Stack, 
 } from "@chakra-ui/react";
 import { v4 as uuid } from "uuid";
 
-
-const GiftInputs = () => {
+const Form = ({ onClose }) => {
 	const [gift, setGift] = useState({
 		description: "",
-		imageUrl: "", 
+		addressee: "",
 		quantity: 1,
+		imageUrl: "", 
 		id: ""
 	});
 
-	const { addGift, deleteAllGifts } = useContext(GiftsContext);
+	const { addGift } = useContext(GiftsContext);
 
 	const handleInputChange = (e) => {
 		setGift({
 			...gift, 
 			[e.target.name]: e.target.value
 		});
-
-		console.log(e.target.value)
 	}
 	
 	const handleSubmit = (e) => {
@@ -40,7 +33,10 @@ const GiftInputs = () => {
 			...gift,
 			id: uuid()
 		});
-		
+
+		// onClose from useDisclosure
+		onClose();
+
 		setGift({
 			description: "",
 			imageUrl: "",
@@ -67,6 +63,16 @@ const GiftInputs = () => {
 			</FormControl>
 			<FormControl>
 				<Input
+					name="addressee"
+					type="text"
+					onChange={handleInputChange}
+					placeholder="Para Jorge"
+					variant="filled"
+					value={gift.addressee}
+				/>
+			</FormControl>
+			<FormControl>
+				<Input
 					name="imageUrl"
 					type="text"
 					onChange={handleInputChange}
@@ -88,13 +94,9 @@ const GiftInputs = () => {
 				// disabled={gift.description === ""} 
 				colorScheme="green"
 				type="submit"
-			>Agregar regalo</Button>
-			<Button 
-				colorScheme="red"
-				onClick={()=>deleteAllGifts()}
-			>Borrar todos</Button>
+			>Agregar</Button>
 		</Stack>
 	);	
 }
 
-export default GiftInputs
+export default Form
