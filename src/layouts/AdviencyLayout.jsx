@@ -11,7 +11,7 @@ import {
 import GiftList from "../components/GiftList";
 import NoGifts from "../components/NoGifts";
 import giftWallpaper from "../assets/giftWallpaper.jpg";
-import ModalFormn from "../components/ModalForm";
+import { AddGiftModal } from "../components/ModalForm/index";
 
 const AdviencyLayout = () => {
 	const { gifts, deleteAllGifts } = useContext(GiftsContext);
@@ -32,7 +32,7 @@ const AdviencyLayout = () => {
 				w="25rem"
 			>
 				<Heading>Regalos</Heading>
-				<ModalFormn/>
+				<AddGiftModal/>
 				{
 					gifts.length === 0
 					? <NoGifts/>

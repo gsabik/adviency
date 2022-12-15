@@ -1,9 +1,10 @@
-import { useContext } from "react"
-import { GiftsContext } from "../context/GiftContext"
-import { Avatar, HStack, IconButton, Text, VStack } from "@chakra-ui/react"
+import { useContext } from "react";
+import { GiftsContext } from "../context/GiftContext";
+import { Avatar, HStack, IconButton, Text, VStack } from "@chakra-ui/react";
 import { DeleteIcon } from "@chakra-ui/icons";
+import { EditGiftModal } from "./ModalForm/index";
 
-const GiftItem = ({ description, addressee, imageUrl, id }) => {
+const GiftItem = ({ gift }) => {
 	const { deleteGift } = useContext(GiftsContext);
 
 	return (
@@ -14,20 +15,23 @@ const GiftItem = ({ description, addressee, imageUrl, id }) => {
 		>
 			<HStack>
 				<Avatar
-					src={imageUrl}
+					src={gift.imageUrl}
 				/>
 				<VStack 
 					alignItems="flex-start"
 					spacing={0}
 				>
-					<Text fontWeight="semibold" fontSize="lg">{description}</Text>
-					<Text>{addressee}</Text>
+					<Text fontWeight="semibold" fontSize="lg">{gift.description}</Text>
+					<Text>Para {gift.addressee}</Text>
 				</VStack>
 			</HStack>
-			<IconButton
-				icon={<DeleteIcon/>}
-				onClick={() => deleteGift(id)}
-			/>
+			<HStack>
+				<EditGiftModal gift={gift} />
+				<IconButton
+					icon={<DeleteIcon/>}
+					onClick={() => deleteGift(gift.id)}
+				/>
+			</HStack>
 		</HStack>
 	);
 }

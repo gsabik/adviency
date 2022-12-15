@@ -24,6 +24,10 @@ export const GiftsProvider = ({ children }) => {
 		return setGifts([]);
 	}
 
+	const updateGift = (id, newValues) => {
+		setGifts(gifts.map(gift => gift.id === id ? newValues : gift));
+	}
+
 	useEffect(() => {
 		localStorage.setItem("gifts", JSON.stringify(gifts));
 	}, [gifts]);
@@ -33,7 +37,8 @@ export const GiftsProvider = ({ children }) => {
 			gifts,
 			addGift, 
 			deleteGift,
-			deleteAllGifts
+			deleteAllGifts,
+			updateGift
 		}}
 		>{children}
 		</GiftsContext.Provider>

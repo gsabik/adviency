@@ -6,8 +6,6 @@ import GiftItem from "./GiftListItem";
 const GiftList = () => {
 	const { gifts } = useContext(GiftsContext);
 
-	console.log(gifts)
-
 	return (
 		<UnorderedList 
 			spacing={4}
@@ -17,7 +15,7 @@ const GiftList = () => {
 				gifts.map(gift => (
 					<GiftItem
 						key={gift.id}
-						{...gift}
+						gift={gift}
 					/>
 				))
 			}
