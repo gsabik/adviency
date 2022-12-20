@@ -13,6 +13,7 @@ import {
 import { EditIcon } from "@chakra-ui/icons";
 import Form from "./Form";
 import { v4 as uuid } from "uuid";
+import { RANDOM_GIFTS } from "../../utils/utils";
 
 const AddGiftModal = () => {
 	const [gift, setGift] = useState({
@@ -23,20 +24,31 @@ const AddGiftModal = () => {
 		id: ""
 	});
 
+	
 	const { isOpen, onOpen, onClose } = useDisclosure();
-
+	
 	const { addGift } = useContext(GiftsContext);
-
+	
 	const handleInputChange = (e) => {
 		setGift({
 			...gift, 
 			[e.target.name]: e.target.value
 		});
 	}
+
+	const generateRandomGift = () => {
+		const randomIndex = Math.floor(Math.random() * RANDOM_GIFTS.length);
+		const randomGift = RANDOM_GIFTS[randomIndex];
+
+		setGift({
+			...gift,
+			description: randomGift
+		});
+	}
 	
 	const handleSubmit = (e) => {
 		e.preventDefault();
-
+		
 		addGift({
 			...gift,
 			id: uuid()
@@ -44,7 +56,7 @@ const AddGiftModal = () => {
 
 		// onClose from useDisclosure
 		onClose();
-
+		
 		setGift({
 			description: "",
 			imageUrl: "",
@@ -73,7 +85,7 @@ const AddGiftModal = () => {
 						<Form
 							handleSubmit={handleSubmit}
 							handleInputChange={handleInputChange} 
-							onClose={onClose}
+							generateRandomGift={generateRandomGift}
 							gift={gift}
 						/>
 					</ModalBody>
@@ -127,7 +139,6 @@ const EditGiftModal = ({ gift }) => {
 						<Form
 							handleSubmit={handleSubmit}
 							handleInputChange={handleInputChange} 
-							onClose={onClose}
 							gift={gift}
 						/>
 					</ModalBody>

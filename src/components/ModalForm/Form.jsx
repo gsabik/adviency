@@ -1,11 +1,14 @@
 import { 
 	Button,
 	FormControl, 
+	IconButton, 
 	Input,
 	Stack, 
+	HStack
 } from "@chakra-ui/react";
+import { RepeatIcon } from "@chakra-ui/icons";
 
-const Form = ({ handleSubmit, handleInputChange, gift }) => {
+const Form = ({ handleSubmit, handleInputChange, generateRandomGift, gift }) => {
 
 	return (
 		<Stack 
@@ -14,14 +17,25 @@ const Form = ({ handleSubmit, handleInputChange, gift }) => {
 			w="full"
 		>
 			<FormControl isRequired>
-				<Input
-					name="description"
-					type="text"
-					onChange={handleInputChange}
-					placeholder="Descripción"
-					variant="filled"
-					defaultValue={gift.description}
-				/>
+				<HStack>
+					<Input
+						name="description"
+						type="text"
+						onChange={handleInputChange}
+						placeholder="Descripción"
+						variant="filled"
+						defaultValue={gift.description}
+					/>
+					{
+						generateRandomGift
+						&&
+						<IconButton
+							colorScheme="green"
+							icon={<RepeatIcon/>}
+							onClick={generateRandomGift}
+						/>
+					}
+				</HStack>
 			</FormControl>
 			<FormControl>
 				<Input
