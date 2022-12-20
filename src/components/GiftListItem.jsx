@@ -21,7 +21,7 @@ const GiftItem = ({ gift }) => {
 					alignItems="flex-start"
 					spacing={0}
 				>
-					<Text fontWeight="semibold" fontSize="lg">{gift.description}</Text>
+					<Text fontWeight="semibold" fontSize="lg">{gift.description} ({gift.quantity}) - ${(gift.quantity * gift.price).toFixed(2)}</Text>
 					<Text>Para {gift.addressee}</Text>
 				</VStack>
 			</HStack>

@@ -14,7 +14,7 @@ import giftWallpaper from "../assets/giftWallpaper.jpg";
 import { AddGiftModal } from "../components/ModalForm/index";
 
 const AdviencyLayout = () => {
-	const { gifts, deleteAllGifts } = useContext(GiftsContext);
+	const { gifts, deleteAllGifts, totalPrice } = useContext(GiftsContext);
 
     return (
         <Box
@@ -39,7 +39,7 @@ const AdviencyLayout = () => {
 					: <GiftList/>
 				}
 				<Divider/>
-				<Text fontWeight="semibold">Total: ${}</Text>
+				<Text fontWeight="semibold">Total: ${totalPrice()}</Text>
 				<VStack w="full">
 					{
 						gifts.length > 0 

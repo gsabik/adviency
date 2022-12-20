@@ -18,6 +18,7 @@ import { RANDOM_GIFTS } from "../../utils/utils";
 const AddGiftModal = () => {
 	const [gift, setGift] = useState({
 		description: "",
+		price: 0,
 		addressee: "",
 		quantity: 1,
 		imageUrl: "", 
@@ -59,6 +60,7 @@ const AddGiftModal = () => {
 		
 		setGift({
 			description: "",
+			price: 0,
 			imageUrl: "",
 			quantity: 1,
 			id: ""
@@ -98,6 +100,7 @@ const AddGiftModal = () => {
 const EditGiftModal = ({ gift }) => {
 	const [editGift, setEditGift] = useState({
 		description: gift.description,
+		price: gift.price,
 		addressee: gift.addressee,
 		quantity: gift.quantity,
 		imageUrl: gift.imageUrl, 

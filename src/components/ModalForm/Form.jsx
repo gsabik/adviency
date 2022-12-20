@@ -39,6 +39,16 @@ const Form = ({ handleSubmit, handleInputChange, generateRandomGift, gift }) => 
 			</FormControl>
 			<FormControl>
 				<Input
+					name="price"
+					type="number"
+					onChange={handleInputChange}
+					placeholder="Precio"
+					variant="filled"
+					defaultValue={gift.price}
+				/>
+			</FormControl>
+			<FormControl>
+				<Input
 					name="addressee"
 					type="text"
 					onChange={handleInputChange}

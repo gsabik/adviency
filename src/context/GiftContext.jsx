@@ -28,6 +28,11 @@ export const GiftsProvider = ({ children }) => {
 		setGifts(gifts.map(gift => gift.id === id ? newValues : gift));
 	}
 
+	const totalPrice = () => {
+		return gifts.reduce((acc, gift) => acc + gift.quantity * gift.price, 0).toFixed(2);;
+
+	}
+
 	useEffect(() => {
 		localStorage.setItem("gifts", JSON.stringify(gifts));
 	}, [gifts]);
@@ -38,7 +43,8 @@ export const GiftsProvider = ({ children }) => {
 			addGift, 
 			deleteGift,
 			deleteAllGifts,
-			updateGift
+			updateGift,
+			totalPrice
 		}}
 		>{children}
 		</GiftsContext.Provider>
