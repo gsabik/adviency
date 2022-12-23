@@ -10,10 +10,10 @@ import {
 	ModalOverlay, 
 	useDisclosure 
 } from "@chakra-ui/react";
-import { EditIcon } from "@chakra-ui/icons";
-import Form from "./Form";
+import { CopyIcon, EditIcon } from "@chakra-ui/icons";
 import { v4 as uuid } from "uuid";
 import { RANDOM_GIFTS } from "../../utils/utils";
+import Form from "./Form";
 
 const AddGiftModal = () => {
 	const [gift, setGift] = useState({
@@ -25,18 +25,10 @@ const AddGiftModal = () => {
 		id: ""
 	});
 
-	
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	
 	const { addGift } = useContext(GiftsContext);
 	
-	const handleInputChange = (e) => {
-		setGift({
-			...gift, 
-			[e.target.name]: e.target.value
-		});
-	}
-
 	const generateRandomGift = () => {
 		const randomIndex = Math.floor(Math.random() * RANDOM_GIFTS.length);
 		const randomGift = RANDOM_GIFTS[randomIndex];
@@ -46,6 +38,14 @@ const AddGiftModal = () => {
 			description: randomGift
 		});
 	}
+
+	const handleInputChange = (e) => {
+		setGift({
+			...gift, 
+			[e.target.name]: e.target.value
+		});
+	}
+
 	
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -151,4 +151,71 @@ const EditGiftModal = ({ gift }) => {
 	);
 }
 
-export { AddGiftModal, EditGiftModal };
+const DuplicateGiftModal = ({ gift }) => {
+	const [duplicateGift, setDuplicateGift] = useState({
+		description: gift.description,
+		price: gift.price,
+		addressee: gift.addressee,
+		quantity: gift.quantity,
+		imageUrl: gift.imageUrl, 
+		id: ""
+	});
+
+	const { isOpen, onOpen, onClose } = useDisclosure();
+
+	const { addGift } = useContext(GiftsContext);
+
+	const handleInputChange = (e) => {
+		setDuplicateGift({
+			...duplicateGift, 
+			[e.target.name]: e.target.value
+		});
+	}
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		
+		addGift({
+			...duplicateGift,
+			id: uuid()
+		});
+
+		onClose();
+		
+		setDuplicateGift({
+			description: "",
+			price: 0,
+			imageUrl: "",
+			quantity: 1,
+			id: ""
+		});
+	}
+
+	return (
+		<>
+			<IconButton
+				icon={<CopyIcon/>}
+				onClick={onOpen}
+			/>
+			<Modal
+				isOpen={isOpen}
+				onClose={onClose}
+				isCentered
+			>
+				<ModalOverlay/>
+				<ModalContent pb={4}>
+					<ModalHeader>Duplicar regalo</ModalHeader>
+					<ModalBody>
+						<Form
+							handleSubmit={handleSubmit}
+							handleInputChange={handleInputChange} 
+							gift={gift}
+						/>
+					</ModalBody>
+				</ModalContent>
+			</Modal>
+		</>
+	);
+}
+
+export { AddGiftModal, EditGiftModal, DuplicateGiftModal };

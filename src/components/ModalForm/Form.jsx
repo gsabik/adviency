@@ -52,7 +52,7 @@ const Form = ({ handleSubmit, handleInputChange, generateRandomGift, gift }) => 
 					name="addressee"
 					type="text"
 					onChange={handleInputChange}
-					placeholder="Para Jorge"
+					placeholder="Destinatario"
 					variant="filled"
 					defaultValue={gift.addressee}
 				/>
@@ -62,7 +62,7 @@ const Form = ({ handleSubmit, handleInputChange, generateRandomGift, gift }) => 
 					name="imageUrl"
 					type="text"
 					onChange={handleInputChange}
-					placeholder="https://image.com"
+					placeholder="Imagen"
 					variant="filled"
 					defaultValue={gift.imageUrl}
 				/>
