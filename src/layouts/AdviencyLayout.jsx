@@ -12,6 +12,7 @@ import GiftList from "../components/GiftList";
 import NoGifts from "../components/NoGifts";
 import giftWallpaper from "../assets/giftWallpaper.jpg";
 import { AddGiftModal } from "../components/ModalForm/index";
+import Preview from "../components/Preview";
 
 const AdviencyLayout = () => {
 	const { gifts, deleteAllGifts, totalPrice } = useContext(GiftsContext);
@@ -50,9 +51,7 @@ const AdviencyLayout = () => {
 							w="full"
 						>Borrar todos</Button>
 					}
-					<Button 
-						w="full"
-					>Previsualizar</Button>
+					<Preview/>
 				</VStack>
 			</VStack>
         </Box>

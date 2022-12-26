@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { GiftsContext } from "../context/GiftContext";
 import { Avatar, HStack, IconButton, Text, VStack } from "@chakra-ui/react";
-import { CopyIcon, DeleteIcon } from "@chakra-ui/icons";
+import { DeleteIcon } from "@chakra-ui/icons";
 import { DuplicateGiftModal, EditGiftModal } from "./ModalForm/index";
 
 const GiftItem = ({ gift }) => {
