@@ -29,7 +29,7 @@ export const GiftsProvider = ({ children }) => {
 	}
 
 	const totalPrice = () => {
-		return gifts.reduce((acc, gift) => acc + gift.quantity * gift.price, 0).toFixed(2);;
+		return gifts.reduce((acc, gift) => acc + gift.quantity * gift.price, 0).toFixed(2);
 
 	}
 
@@ -49,5 +49,4 @@ export const GiftsProvider = ({ children }) => {
 		>{children}
 		</GiftsContext.Provider>
 	);
-
 }
