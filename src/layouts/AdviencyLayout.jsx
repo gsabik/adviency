@@ -5,6 +5,7 @@ import {
     Button, 
     Divider, 
     Heading, 
+	HStack, 
 	Text, 
     VStack 
 } from "@chakra-ui/react";
@@ -13,6 +14,7 @@ import NoGifts from "../components/NoGifts";
 import giftWallpaper from "../assets/giftWallpaper.jpg";
 import { AddGiftModal } from "../components/ModalForm/index";
 import Preview from "../components/Preview";
+import Player from "../components/Player";
 
 const AdviencyLayout = () => {
 	const { gifts, deleteAllGifts, totalPrice } = useContext(GiftsContext);
@@ -32,7 +34,10 @@ const AdviencyLayout = () => {
 				spacing={4}
 				w="25rem"
 			>
-				<Heading>Regalos</Heading>
+				<HStack justifyContent="space-between" w="full" >
+					<Heading>Regalos</Heading>
+					<Player/>
+				</HStack>
 				<AddGiftModal/>
 				{
 					gifts.length === 0
@@ -49,7 +54,8 @@ const AdviencyLayout = () => {
 							colorScheme="red"
 							onClick={() => deleteAllGifts()}
 							w="full"
-						>Borrar todos</Button>
+						>Borrar todos
+						</Button>
 					}
 					<Preview/>
 				</VStack>

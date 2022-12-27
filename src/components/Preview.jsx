@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { GiftsContext } from "../context/GiftContext";
 import { 
 	Avatar,
 	Button, 
@@ -14,8 +16,6 @@ import {
 	useDisclosure,
 	VStack
 } from "@chakra-ui/react";
-import { useContext } from "react";
-import { GiftsContext } from "../context/GiftContext";
 
 const Preview = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
