@@ -19,19 +19,19 @@ import {
 
 const Preview = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-
 	const { gifts } = useContext(GiftsContext);
 
 	return (
 		<>
 			<Button
+				disabled={gifts.length === 0}
 				onClick={onOpen}
 				w="full"
 			>Previsualizar
 			</Button>
 			<Modal
-				isOpen={isOpen}
 				isCentered
+				isOpen={isOpen}
 				onClose={onClose}
 			>
 				<ModalOverlay/>

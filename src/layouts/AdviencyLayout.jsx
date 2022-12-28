@@ -9,10 +9,11 @@ import {
 	Text, 
     VStack 
 } from "@chakra-ui/react";
+import Snowfall from "react-snowfall";
+import { AddGiftModal } from "../components/ModalForm/index";
 import GiftList from "../components/GiftList";
 import NoGifts from "../components/NoGifts";
 import giftWallpaper from "../assets/giftWallpaper.jpg";
-import { AddGiftModal } from "../components/ModalForm/index";
 import Preview from "../components/Preview";
 import Player from "../components/Player";
 
@@ -27,6 +28,10 @@ const AdviencyLayout = () => {
             h="100vh"
             justifyContent="center"
         >
+			<Snowfall
+				speed={[0.5, 5]}
+				wind={[2.5, 3.5]}
+			/>
 			<VStack
 				bgColor="white"
 				borderRadius="md"
@@ -45,7 +50,11 @@ const AdviencyLayout = () => {
 					: <GiftList/>
 				}
 				<Divider/>
-				<Text fontWeight="semibold">Total: ${totalPrice()}</Text>
+				{
+					gifts.length > 0
+					&&
+					<Text fontWeight="semibold">Total: ${totalPrice()}</Text>
+				}
 				<VStack w="full">
 					{
 						gifts.length > 0 
