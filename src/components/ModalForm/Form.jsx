@@ -19,12 +19,12 @@ const Form = ({ handleSubmit, handleInputChange, generateRandomGift, gift }) => 
 			<FormControl isRequired>
 				<HStack>
 					<Input
+						defaultValue={gift.description}
 						name="description"
-						type="text"
 						onChange={handleInputChange}
 						placeholder="Descripción"
+						type="text"
 						variant="filled"
-						defaultValue={gift.description}
 					/>
 					{
 						generateRandomGift
@@ -37,49 +37,46 @@ const Form = ({ handleSubmit, handleInputChange, generateRandomGift, gift }) => 
 					}
 				</HStack>
 			</FormControl>
-			<FormControl>
+			<FormControl isRequired>
 				<Input
+					defaultValue={gift.price}
 					name="price"
-					type="number"
 					onChange={handleInputChange}
 					placeholder="Precio"
+					type="number"
 					variant="filled"
-					defaultValue={gift.price}
 				/>
 			</FormControl>
-			<FormControl>
+			<FormControl isRequired>
 				<Input
+					defaultValue={gift.addressee}
 					name="addressee"
-					type="text"
 					onChange={handleInputChange}
 					placeholder="Destinatario"
+					type="text"
 					variant="filled"
-					defaultValue={gift.addressee}
 				/>
 			</FormControl>
 			<FormControl>
 				<Input
+					defaultValue={gift.imageUrl}
 					name="imageUrl"
-					type="text"
 					onChange={handleInputChange}
 					placeholder="Imagen"
+					type="text"
 					variant="filled"
-					defaultValue={gift.imageUrl}
 				/>
 			</FormControl>
-			<FormControl>
+			<FormControl isRequired>
 				<Input
-					name="quantity"
-					type="number"
-					onChange={handleInputChange}
-					variant="filled"
 					defaultValue={gift.quantity}
+					name="quantity"
+					onChange={handleInputChange}
+					type="number"
+					variant="filled"
 				/>
 			</FormControl>
-			<Button
-				colorScheme="green"
-				type="submit"
-			>Agregar</Button>
+			<Button colorScheme="green" type="submit">Agregar</Button>
 		</Stack>
 	);	
 }
