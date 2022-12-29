@@ -45,7 +45,6 @@ const AddGiftModal = () => {
 			[e.target.name]: e.target.value
 		});
 	}
-
 	
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -126,10 +125,7 @@ const EditGiftModal = ({ gift }) => {
 
 	return (
 		<>
-			<IconButton
-				icon={<EditIcon/>}
-				onClick={onOpen}
-			/>
+			<IconButton icon={<EditIcon/>} onClick={onOpen}/>
 			<Modal
 				isOpen={isOpen}
 				onClose={onClose}
@@ -193,10 +189,7 @@ const DuplicateGiftModal = ({ gift }) => {
 
 	return (
 		<>
-			<IconButton
-				icon={<CopyIcon/>}
-				onClick={onOpen}
-			/>
+			<IconButton icon={<CopyIcon/>} onClick={onOpen}/>
 			<Modal
 				isOpen={isOpen}
 				onClose={onClose}

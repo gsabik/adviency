@@ -57,11 +57,7 @@ const Preview = () => {
 						</UnorderedList>
 					</ModalBody>
 					<ModalFooter>
-						<Button 
-							colorScheme="green" 
-							onClick={() => window.print()}
-						>Imprimir
-						</Button>
+						<Button colorScheme="green" onClick={() => window.print()}>Imprimir</Button>
 					</ModalFooter>
 				</ModalContent>
 			</Modal>		

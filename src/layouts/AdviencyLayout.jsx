@@ -28,18 +28,15 @@ const AdviencyLayout = () => {
             h="100vh"
             justifyContent="center"
         >
-			<Snowfall
-				speed={[0.5, 5]}
-				wind={[2.5, 3.5]}
-			/>
+			<Snowfall speed={[0.5, 5]} wind={[2.5, 3.5]}/>
 			<VStack
 				bgColor="white"
 				borderRadius="md"
 				p={4}
-				spacing={4}
-				w="25rem"
+				spacing={6}
+				w="35rem"
 			>
-				<HStack justifyContent="space-between" w="full" >
+				<HStack justifyContent="space-between" w="full">
 					<Heading>Regalos</Heading>
 					<Player/>
 				</HStack>
